@@ -1,8 +1,9 @@
-const issuesOutput = document.querySelector('#issues')
-const alertMessage= '<div class="alert alert-danger" role="alert">Something went wrong</div>'
-const emptyUrl= '<div class="alert alert-danger" role="alert">Please add a valid URL</div>'
-const warningMessage= '<div class="alert alert-warning" role="alert">No issues found</div>'
-const CsvMessage= '<div class="alert alert-warning" role="alert">CSV not available</div>'
+const issuesOutput = document.querySelector('#issues');
+const issuesCount = document.querySelector('#number');
+const alertMessage= '<div class="alert alert-danger" role="alert">Something went wrong</div>';
+const emptyUrl= '<div class="alert alert-danger" role="alert">Please add a valid URL</div>';
+const warningMessage= '<div class="alert alert-warning" role="alert">No issues found</div>';
+const CsvMessage= '<div class="alert alert-warning" role="alert">CSV not available</div>';
 
 // Fetch a11y issues
 const testAccessibility = async (e) => {
@@ -58,7 +59,7 @@ const csvIssues = async (e) => {
       const link = document.createElement('a');
 
       link.href = csvUrl;
-      link.download = 'issues_list.csv';
+      link.download = 'a11y_issues_list_'+url.substring(12)+'.csv'
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -70,6 +71,7 @@ const csvIssues = async (e) => {
 const clearResults = (e) => {
   e.preventDefault();
   issuesOutput.innerHTML = '';
+  issuesCount.innerHTML = '';
   document.querySelector('#url').value = '';
 }
 
@@ -77,10 +79,15 @@ const clearResults = (e) => {
 const addIssuesToDOM = (issues) => {
 
   issuesOutput.innerHTML = '';
+  issuesCount.innerHTML = '';
 
   if(issues.length === 0) {
     issuesOutput.innerHTML = warningMessage;
   } else {
+    issuesCount.innerHTML = `
+      <p class="alert alert-warning">${issues.length} issues found !</p>
+    `;
+
     issues.forEach((issue) => {
       const output = `
         <div class="card mb-5">
