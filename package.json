@@ -18,7 +18,7 @@
   "author": "Jon Insley <5669143+jinsley8@users.noreply.github.com>",
   "license": "ISC",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index"
   },
   "dependencies": {
     "express": "^4.17.2",
