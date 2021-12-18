@@ -13,6 +13,36 @@
     <title>Pa11y Website Accessibility Tester</title>
   </head>
   <body>
+    <div class="container-sm">
+      <div class="card my-6 p-3 bg-dark text-light">
+        <div class="card-body">
+          <h2 class="mb-4">Pa11y Website Accessibility Tester</h2>
+          
+          <form id="form">
+            <div class="input-group mb-3">
+              <input
+                type="url"
+                id="url"
+                class="form-control"
+                placeholder="Enter a website URL..."
+              />
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+
+          <button id="clearResults" class="btn btn-danger hideButton">Clear Results</button>
+          <button id="csvBtn" class="btn btn-warning hideButton">Download Csv</button>
+        </div>
+      </div>
+
+      <div class="loader text-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+      <div id="number"></div>
+      <div id="issues"></div>
+    </div>
 
     <script src="js/main.js"></script>
   </body>
