@@ -3,13 +3,18 @@
   "description": "Check websites for accessibility issues using pa11y",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": ">=12.x"
+  },
   "private": true,
   "keywords": [
     "nodejs",
     "pa11y",
     "a11y",
-    "wcag",
-    "accessibility"
+    "a11y-testing",
+    "wcag2",
+    "accessibility",
+    "accessibility-checker"
   ],
   "repository": {
     "type": "git",
@@ -18,7 +23,7 @@
   "author": "Jon Insley <5669143+jinsley8@users.noreply.github.com>",
   "license": "ISC",
   "scripts": {
-    "start": "node index"
+    "start": "node index.js"
   },
   "dependencies": {
     "express": "^4.17.2",

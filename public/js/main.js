@@ -1,9 +1,9 @@
 const issuesOutput = document.querySelector('#issues');
 const issuesCount = document.querySelector('#number');
-const alertMessage= '<div class="alert alert-danger" role="alert">Something went wrong</div>';
-const emptyUrl= '<div class="alert alert-danger" role="alert">Please add a valid URL</div>';
-const warningMessage= '<div class="alert alert-warning" role="alert">No issues found</div>';
-const CsvMessage= '<div class="alert alert-warning" role="alert">CSV not available</div>';
+const alertMessage = '<div class="alert alert-danger" role="alert">Something went wrong</div>';
+const emptyUrl = '<div class="alert alert-danger" role="alert">Please add a valid URL</div>';
+const warningMessage = '<div class="alert alert-warning" role="alert">No issues found</div>';
+const CsvMessage = '<div class="alert alert-warning" role="alert">CSV not available</div>';
 
 // Fetch a11y issues
 const testAccessibility = async (e) => {
