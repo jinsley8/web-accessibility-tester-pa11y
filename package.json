@@ -1,0 +1,27 @@
+{
+  "name": "web-accessibility-tester-pa11y",
+  "description": "Check websites for accessibility issues using pa11y",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "keywords": [
+    "nodejs",
+    "pa11y",
+    "a11y",
+    "wcag",
+    "accessibility"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jinsley8/web-accessibility-tester-pa11y.git"
+  },
+  "author": "Jon Insley <5669143+jinsley8@users.noreply.github.com>",
+  "license": "ISC",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "pa11y": "^6.1.1"
+  }
+}
