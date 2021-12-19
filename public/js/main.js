@@ -92,9 +92,13 @@ const addIssuesToDOM = (issues) => {
     `;
 
     issues.forEach((issue) => {
+
       const output = `
         <div class="bg-white flex flex-col rounded-lg border-solid border border-gray-200 shadow px-8 py-8 mb-8">
-            <h2 class="font-sans text-lg leading-6 font-medium text-gray-900 mb-8">${issue.message}</h2>
+            
+            ${issue.runnerExtras?.description === undefined ? `<h2 class="font-sans text-lg leading-6 font-medium text-gray-900 mb-8">${issue.message}</h2>` : `<h2 class="font-sans text-lg leading-6 font-medium text-gray-900 mb-4">${issue.message}</h2>`}
+
+            ${issue.runnerExtras?.description === undefined ? '' : `<p class="font-sans mb-8">${issue.runnerExtras.description}.</p>`}
 
             <p class="bg-slate-100 rounded-md px-3 py-3 mb-4">
               ${escapeHTML(issue.context)}
