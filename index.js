@@ -1,9 +1,12 @@
+import dotenv from 'dotenv';
 import express from 'express';
 import pa11y from 'pa11y';
 import cors from 'cors';
 import morgan from 'morgan';
 import chalk from 'chalk';
 import puppeteer from 'puppeteer';
+
+dotenv.config();
 
 const app = express();
 
@@ -58,5 +61,5 @@ app.use(express.static('public'));
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(chalk.yellow(`Server is running on port ${PORT}!`))
+  console.log(chalk.yellow(`Server is running in ${process.env.NODE_ENV} on port ${PORT}!`))
 });
