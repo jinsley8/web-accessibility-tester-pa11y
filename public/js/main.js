@@ -1,9 +1,9 @@
 const issuesOutput = document.querySelector('#issues');
 const issuesCount = document.querySelector('#number');
-const alertMessage = '<div class="py-4 px-6 bg-red-100 border border-solid rounded-md border-red-300 text-lg text-red-600" role="alert">Something went wrong</div>';
-const emptyUrl = '<div class="py-4 px-6 bg-red-100 border border-solid rounded-md border-red-300 text-base text-red-600" role="alert">Please add a valid URL</div>';
-const warningMessage = '<div class="py-4 px-6 bg-green-100 border border-solid rounded-md border-green-300 text-lg text-green-600" role="alert">No issues found</div>';
-const CsvMessage = '<div class="py-4 px-6 bg-red-100 border border-solid rounded-md border-red-300 text-lg text-red-600" role="alert">CSV not available</div>';
+const alertMessage = '<div class="py-4 px-6 bg-red-100 border border-solid rounded-md border-red-200 text-lg text-red-500" role="alert">Something went wrong</div>';
+const emptyUrl = '<div class="py-4 px-6 bg-red-100 border border-solid rounded-md border-red-200 text-base text-red-500" role="alert">Please add a valid URL</div>';
+const warningMessage = '<div class="py-4 px-6 bg-green-100 border border-solid rounded-md border-green-200 text-lg text-green-500" role="alert">No issues found</div>';
+const CsvMessage = '<div class="py-4 px-6 bg-red-100 border border-solid rounded-md border-red-200 text-lg text-red-500" role="alert">CSV not available</div>';
 
 // Fetch a11y issues
 const testAccessibility = async (e) => {
@@ -85,20 +85,23 @@ const addIssuesToDOM = (issues) => {
     issuesOutput.innerHTML = warningMessage;
   } else {
     issuesCount.innerHTML = `
-      <div class="mb-8 py-4 px-6 bg-red-100 border border-solid rounded-md border-red-300 text-lg text-red-600" role="alert">${issues.length} issues found!</div>
+      <div class="mb-8 py-4 px-6 bg-red-100 border border-solid rounded-md border-red-200 text-lg text-red-500" role="alert">${issues.length} issues found!</div>
     `;
 
     issues.forEach((issue) => {
       const output = `
         <div class="bg-white flex flex-col rounded-lg border-solid border border-gray-200 shadow px-8 py-8 mb-8">
-            <h2 class="font-sans text-lg leading-6 font-medium text-gray-900 mb-4">${issue.message}</h2>
+            <h2 class="font-sans text-lg leading-6 font-medium text-gray-900 mb-8">${issue.message}</h2>
 
-            <p class="bg-slate-200 px-3 py-3 mb-4">
+            <p class="bg-slate-100 rounded-md px-3 py-3 mb-4">
               ${escapeHTML(issue.context)}
             </p>
 
-            <p class="bg-red-100 text-light px-3 py-3">
-              CODE: ${issue.code}
+            <p class="flex text-light px-3 py-3">
+              <span class="mr-3 px-2 inline-flex items-center text-ss leading-4 font-semibold rounded-full bg-red-100 text-red-800">
+                ${issue.type}
+              </span>
+              ${issue.code}
             </p>
         </div>
       `
