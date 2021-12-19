@@ -1,6 +1,6 @@
 const issuesOutput = document.querySelector('#issues');
 const issuesCount = document.querySelector('#number');
-const alertMessage = '<div class="py-4 px-6 bg-red-100 border border-solid rounded-md border-red-200 text-lg text-red-500" role="alert">Something went wrong</div>';
+const alertMessage = '<div class="py-4 px-6 bg-red-100 border border-solid rounded-md border-red-200 text-lg text-red-500" role="alert">Cannot resolve URL. Try a different one.</div>';
 const emptyUrl = '<div class="py-4 px-6 bg-red-100 border border-solid rounded-md border-red-200 text-base text-red-500" role="alert">Please add a valid URL</div>';
 const warningMessage = '<div class="py-4 px-6 bg-green-100 border border-solid rounded-md border-green-200 text-lg text-green-500" role="alert">No issues found</div>';
 const CsvMessage = '<div class="py-4 px-6 bg-red-100 border border-solid rounded-md border-red-200 text-lg text-red-500" role="alert">CSV not available</div>';

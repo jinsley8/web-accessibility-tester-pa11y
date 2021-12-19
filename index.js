@@ -1,19 +1,30 @@
 const express = require('express');
 const pa11y = require('pa11y');
 
-const PORT = process.env.PORT || 5000;
-
 const app = express();
 
-app.use(express.static('public'));
+app.get('/api/test', async (req, res) => {
 
-app.get('/api/test', async (req,res) => {
   if(!req.query.url) {
     res.status(400).json({error: 'URL is required'});
-  } else {
+  }
+
+  try {
     const results = await pa11y(req.query.url);
     res.status(200).json(results);
+  } catch (error) {
+    res.status(500).json({error: error.message});
   }
 });
+
+// Set static folder
+app.use(express.static('public'));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+});
+
+
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
