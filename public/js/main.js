@@ -100,9 +100,14 @@ const addIssuesToDOM = (issues) => {
 
             ${issue.runnerExtras?.description === undefined ? '' : `<p class="font-sans mb-8">${issue.runnerExtras.description}.</p>`}
 
-            <p class="bg-slate-100 rounded-md px-3 py-3 mb-4">
-              ${escapeHTML(issue.context)}
-            </p>
+            <div class="bg-slate-100 rounded-md px-3 py-3 mb-4">
+              <p class="mb-3">
+                ${escapeHTML(issue.context)}
+              </p>
+              <p>
+                <strong>selector:</strong> ${issue.selector}
+              </p>
+            </div>
 
             <p class="flex text-light pt-3">
               <span class="mr-3 px-2 inline-flex items-center text-ss leading-4 font-semibold rounded-full bg-red-100 text-red-800">
