@@ -23,7 +23,8 @@
   "author": "Jon Insley <5669143+jinsley8@users.noreply.github.com>",
   "license": "ISC",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index",
+    "dev": "nodemon index"
   },
   "dependencies": {
     "express": "^4.17.2",
