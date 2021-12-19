@@ -24,6 +24,10 @@ app.get('/api/test', async (req, res) => {
     }
 
     const results = await pa11y(req.query.url, {
+      runners: [
+        'axe',
+        'htmlcs'
+      ],
       browser: browser,
       page,
     });
