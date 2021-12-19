@@ -1,6 +1,5 @@
 const issuesOutput = document.querySelector('#issues');
 const issuesCount = document.querySelector('#number');
-const alertMessage = '<div class="py-4 px-6 bg-red-100 border border-solid rounded-md border-red-200 text-lg text-red-500" role="alert">Cannot resolve URL. Try a different one.</div>';
 const emptyUrl = '<div class="py-4 px-6 bg-red-100 border border-solid rounded-md border-red-200 text-base text-red-500" role="alert">Please add a valid URL</div>';
 const warningMessage = '<div class="py-4 px-6 bg-green-100 border border-solid rounded-md border-green-200 text-lg text-green-500" role="alert">No issues found</div>';
 const CsvMessage = '<div class="py-4 px-6 bg-red-100 border border-solid rounded-md border-red-200 text-lg text-red-500" role="alert">CSV not available</div>';
@@ -20,7 +19,8 @@ const testAccessibility = async (e) => {
 
     if(response.status !== 200) {
       setLoading(false);
-      issuesOutput.innerHTML = alertMessage;
+      const { error } = await response.json();
+      issuesOutput.innerHTML = `<div class="py-4 px-6 bg-red-100 border border-solid rounded-md border-red-200 text-lg text-red-500" role="alert">Incorrect URL - ${error}</div>`;
     } else {
       const { issues } = await response.json();
       addIssuesToDOM(issues);
@@ -73,6 +73,8 @@ const clearResults = (e) => {
   issuesOutput.innerHTML = '';
   issuesCount.innerHTML = '';
   document.querySelector('#url').value = '';
+  document.getElementById("clearResults").classList.add("hideButton");
+  document.getElementById("csvBtn").classList.add("hideButton");
 }
 
 // Add issues to DOM
@@ -97,7 +99,7 @@ const addIssuesToDOM = (issues) => {
               ${escapeHTML(issue.context)}
             </p>
 
-            <p class="flex text-light px-3 py-3">
+            <p class="flex text-light pt-3">
               <span class="mr-3 px-2 inline-flex items-center text-ss leading-4 font-semibold rounded-full bg-red-100 text-red-800">
                 ${issue.type}
               </span>
