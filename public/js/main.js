@@ -20,6 +20,7 @@ const testAccessibility = async (e) => {
     if(response.status !== 200) {
       setLoading(false);
       const { error } = await response.json();
+      issuesCount.innerHTML = '';
       issuesOutput.innerHTML = `<div class="py-4 px-6 bg-red-100 border border-solid rounded-md border-red-200 text-lg text-red-500" role="alert">Incorrect URL - ${error}</div>`;
     } else {
       const { issues } = await response.json();
@@ -120,6 +121,7 @@ const setLoading = (isLoading = true) => {
   if(isLoading) {
     loader.style.display = 'block';
     issuesOutput.innerHTML = '';
+    issuesCount.innerHTML = '';
   } else {
     loader.style.display = 'none';
   }
