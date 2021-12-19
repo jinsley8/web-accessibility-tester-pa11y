@@ -1,9 +1,9 @@
 const issuesOutput = document.querySelector('#issues');
 const issuesCount = document.querySelector('#number');
-const alertMessage = '<div class="alert alert-danger" role="alert">Something went wrong</div>';
-const emptyUrl = '<div class="alert alert-danger" role="alert">Please add a valid URL</div>';
-const warningMessage = '<div class="alert alert-warning" role="alert">No issues found</div>';
-const CsvMessage = '<div class="alert alert-warning" role="alert">CSV not available</div>';
+const alertMessage = '<div class="py-4 px-6 bg-red-100 border border-solid rounded-md border-red-300 text-lg text-red-600" role="alert">Something went wrong</div>';
+const emptyUrl = '<div class="py-4 px-6 bg-red-100 border border-solid rounded-md border-red-300 text-base text-red-600" role="alert">Please add a valid URL</div>';
+const warningMessage = '<div class="py-4 px-6 bg-green-100 border border-solid rounded-md border-green-300 text-lg text-green-600" role="alert">No issues found</div>';
+const CsvMessage = '<div class="py-4 px-6 bg-red-100 border border-solid rounded-md border-red-300 text-lg text-red-600" role="alert">CSV not available</div>';
 
 // Fetch a11y issues
 const testAccessibility = async (e) => {
@@ -31,7 +31,7 @@ const testAccessibility = async (e) => {
   }
 }
 
-//Download CSV
+// Download CSV
 const csvIssues = async (e) => {
   e.preventDefault();
   const url = document.querySelector('#url').value;
@@ -67,7 +67,7 @@ const csvIssues = async (e) => {
   }
 }
 
-//Clear results
+//C lear results
 const clearResults = (e) => {
   e.preventDefault();
   issuesOutput.innerHTML = '';
@@ -85,23 +85,21 @@ const addIssuesToDOM = (issues) => {
     issuesOutput.innerHTML = warningMessage;
   } else {
     issuesCount.innerHTML = `
-      <p class="alert alert-warning">${issues.length} issues found !</p>
+      <div class="mb-8 py-4 px-6 bg-red-100 border border-solid rounded-md border-red-300 text-lg text-red-600" role="alert">${issues.length} issues found!</div>
     `;
 
     issues.forEach((issue) => {
       const output = `
-        <div class="card mb-5">
-          <div class="card-body">
-            <h3>${issue.message}</h3>
+        <div class="bg-white flex flex-col rounded-lg border-solid border border-gray-200 shadow px-8 py-8 mb-8">
+            <h2 class="font-sans text-lg leading-6 font-medium text-gray-900 mb-4">${issue.message}</h2>
 
-            <p class="bg-light p-3 my-3">
+            <p class="bg-slate-200 px-3 py-3 mb-4">
               ${escapeHTML(issue.context)}
             </p>
 
-            <p class="bg-secondary text-light p-2">
+            <p class="bg-red-100 text-light px-3 py-3">
               CODE: ${issue.code}
             </p>
-          </div>
         </div>
       `
 
